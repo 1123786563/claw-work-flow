@@ -1,0 +1,20 @@
+[
+  {
+    "tasks": [],
+    "config": {
+      "maxRetries": 3,
+      "checkIntervalMinutes": 10,
+      "agents": {
+        "claude": {
+          "model": "claude-opus-4-5-20251029",
+          "command": "claude"
+        },
+        "gemini": {
+          "model": "gemini-2.5-pro",
+          "command": "gemini"
+        }
+      }
+    },
+    "history": []
+  }
+]

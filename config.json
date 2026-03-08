@@ -1,0 +1,17 @@
+{
+  "obsidian_vault_path": "/Users/yongjunwu/clawdbot/myzoetest/myzoetest",
+  "project_mappings": {
+    "myzoetest": "/Users/yongjunwu/clawdbot/myzoetest",
+    "medialyst": "/Users/yongjunwu/Workspace/medialyst"
+  },
+  "default_agents": {
+    "ui": {
+      "name": "claude",
+      "model": "claude-3-5-sonnet-20241022"
+    },
+    "logic": {
+      "name": "codex",
+      "model": "gpt-5.3-codex"
+    }
+  }
+}
