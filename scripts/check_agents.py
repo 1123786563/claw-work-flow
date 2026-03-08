@@ -110,7 +110,39 @@ def main():
                 task['uiValidated'] = True
 
             if pr_info and pr_info.get('state') == 'MERGED':
+                if task.get('status') != 'merged':
+                    # 发送合并通知
+                    notify_script = os.path.join(clawdbot_dir, 'scripts/notify.sh')
+                    subprocess.run([notify_script, 'merged', str(task_id),
+                                   str(task.get('prNumber', '')),
+                                   str(task.get('prUrl', '')),
+                                   'PR has been merged successfully'])
                 task['status'] = 'merged'
+
+            # 发送 PR 就绪通知
+            if task['status'] == 'completed' and not task.get('notified'):
+                notify_script = os.path.join(clawdbot_dir, 'scripts/notify.sh')
+                subprocess.run([notify_script, 'pr_ready', str(task_id),
+                               str(task.get('prNumber', '')),
+                               str(task.get('prUrl', '')),
+                               'Ready for manual review and merge'])
+                task['notified'] = True
+
+            # 发送 CI 失败通知
+            if task['status'] == 'failed' and not task.get('failedNotified'):
+                notify_script = os.path.join(clawdbot_dir, 'scripts/notify.sh')
+                subprocess.run([notify_script, 'ci_failed', str(task_id),
+                               str(task.get('prNumber', '')),
+                               str(task.get('prUrl', '')),
+                               task.get('note', 'CI checks failed')])
+                task['failedNotified'] = True
+
+            # 发送崩溃通知
+            if task['status'] == 'crashed' and not task.get('crashNotified'):
+                notify_script = os.path.join(clawdbot_dir, 'scripts/notify.sh')
+                subprocess.run([notify_script, 'crashed', str(task_id),
+                               '', '', task.get('note', 'Agent crashed')])
+                task['crashNotified'] = True
 
         updated_tasks.append(task)
 

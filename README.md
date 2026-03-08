@@ -42,6 +42,9 @@
 │   ├── review-pr.sh       # PR 审查
 │   ├── zoe.sh             # Zoe 协调器
 │   ├── cleanup.sh         # 清理脚本 (每日)
+│   ├── notify.sh          # 通知发送 (Telegram/Discord/Slack)
+│   ├── setup-cron.sh      # 配置定时任务
+│   ├── remove-cron.sh     # 移除定时任务
 │   └── auth/              # 认证模块
 │       ├── db.sh          # 数据库管理
 │       ├── user.sh        # 用户 CRUD 操作
@@ -101,12 +104,45 @@ tail -f ~/clawdbot/logs/task-*.log
 ## Cron 任务
 
 ```bash
+# 配置定时任务（一键设置）
+~/clawdbot/scripts/setup-cron.sh
+
 # 查看已配置的 cron
 crontab -l | grep clawdbot
 
-# 输出:
-# */10 * * * * ~/clawdbot/scripts/check-agents.sh
-# 0 3 * * * ~/clawdbot/scripts/cleanup.sh
+# 移除定时任务
+~/clawdbot/scripts/remove-cron.sh
+
+# 定时任务说明:
+# */10 * * * * ~/clawdbot/scripts/check-agents.sh  # 每10分钟监控
+# 0 3 * * * ~/clawdbot/scripts/cleanup.sh          # 每日凌晨3点清理
+```
+
+## 通知配置
+
+编辑 `~/clawdbot/.env`，配置你想要的通知渠道：
+
+```bash
+# Telegram 通知
+TELEGRAM_BOT_TOKEN="your-bot-token"
+TELEGRAM_CHAT_ID="your-chat-id"
+
+# Discord 通知
+DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/xxx/xxx"
+
+# Slack 通知
+SLACK_WEBHOOK_URL="https://hooks.slack.com/services/xxx/xxx/xxx"
+```
+
+通知类型：
+- `pr_ready` - PR 就绪，等待人工合并
+- `ci_failed` - CI 测试失败
+- `merged` - PR 已合并
+- `crashed` - Agent 崩溃
+
+手动发送通知：
+```bash
+~/clawdbot/scripts/notify.sh pr_ready task-xxx 123 "https://github.com/xxx/pull/123" "Ready for review"
 ```
 
 ## 配置
