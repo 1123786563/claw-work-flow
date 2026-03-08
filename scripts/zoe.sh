@@ -37,12 +37,12 @@ fi
 # 使用 Claude 分析任务并决定使用哪个 agent
 DECISION=$(claude --model claude-3-5-sonnet-20241022 \
   --dangerously-skip-permissions \
-  -p "You are Zoe, an AI orchestrator for a software development team.
-Your job is to analyze tasks and decide which coding agent should handle them.
+  -p "你是Zoe，一个软件开发团队的AI编排者。
+你的工作是分析任务并决定应该由哪个编程代理来处理它们。
 
-Available agents:
-- claude: Best for frontend work, git operations, quick fixes
-- gemini: Best for UI/UX design, creative solutions, visual work
+可用的代理：
+- claude：最适合前端工作、git操作、快速修复
+- gemini：最适合UI/UX设计、创意解决方案、视觉工作
 
 Task: $TASK
 
@@ -89,9 +89,13 @@ else
     MODEL="${CLAUDE_MODEL:-claude-3-5-sonnet-20241022}" # fallback
 fi
 
-# 生成任务 ID 和 Prompt 文件
+# 确保 Prompt 目录存在
+PROMPTS_DIR="${PROMPTS_DIR:-$CLAWDBOT_ROOT/prompts}"
+mkdir -p "$PROMPTS_DIR"
+
+# 生成任务 ID 和 Prompt 文件 (使用绝对路径)
 TASK_ID="task-$(date +%Y%m%d-%H%M%S)"
-PROMPT_FILE="/tmp/clawdbot-prompt-${TASK_ID}.txt"
+PROMPT_FILE="$PROMPTS_DIR/prompt-${TASK_ID}.txt"
 echo "$PROMPT" > "$PROMPT_FILE"
 
 echo "🚀 Spawning agent..."

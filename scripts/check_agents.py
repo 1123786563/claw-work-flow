@@ -48,6 +48,14 @@ def main():
             # 检查 tmux session
             is_tmux_alive = run_command(['tmux', 'has-session', '-t', tmux_session]) is not None
             
+            # 检查 worktree 目录是否存在
+            if not worktree or not os.path.isdir(worktree):
+                print(f'❌ 任务 {task_id} 的 worktree 目录不存在: {worktree}')
+                task['status'] = 'crashed'
+                task['note'] = 'Worktree missing'
+                updated_tasks.append(task)
+                continue
+
             # 检查 PR 信息
             pr_info_json = run_command(['gh', 'pr', 'list', '--head', branch, '--json', 'number,state,statusCheckRollup,url'], cwd=worktree)
             

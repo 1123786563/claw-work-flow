@@ -1,0 +1,165 @@
+# 环境变量文件
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# 日志文件
+logs/
+*.log
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+*.temp
+
+# IDE 和编辑器文件
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node.js 相关
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Python 相关
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Java 相关
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+replay_pid*
+
+# 工作树和任务目录
+worktrees/
+tasks/
+
+# OMC (OpenAI Model Context) 相关
+.omc/
+
+# 活跃任务和配置文件
+active-tasks.json
+config.json
+
+# 项目内存文件
+project-memory.json
+
+# 会话和状态文件
+sessions/
+state/
+
+# 截图文件
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.svg
+screenshot.*
+
+# 文本文件
+1.text
+*.text
+
+# 进度和发现文件
+progress.md
+findings.md
+task_plan.md
+
+# 依赖目录
+vendor/
+deps/
+
+# 缓存目录
+.cache/
+.parcel-cache/
+
+# 测试覆盖率
+coverage/
+.nyc_output/
+
+# 构建输出
+dist/
+build/
+out/
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# 备份文件
+*.bak
+*.backup
+*.old
+
+# 压缩文件
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# 密钥和证书
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# 本地配置文件
+local_config.json
+user_config.json
+
+# 临时脚本
+temp_*.sh
+temp_*.py
+temp_*.js
+
+# AI 模型输出
+model_output/
+ai_generated/
+
+# 调试文件
+debug.log
+debug.txt
+debug/

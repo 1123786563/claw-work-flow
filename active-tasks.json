@@ -1,20 +1,73 @@
-[
-  {
-    "tasks": [],
-    "config": {
-      "maxRetries": 3,
-      "checkIntervalMinutes": 10,
-      "agents": {
-        "claude": {
-          "model": "claude-opus-4-5-20251029",
-          "command": "claude"
-        },
-        "gemini": {
-          "model": "gemini-2.5-pro",
-          "command": "gemini"
-        }
-      }
+{
+  "tasks": [
+    {
+      "id": "task-test-1772959023",
+      "tmuxSession": "claude-task-test-1772959023",
+      "agent": "claude",
+      "model": "claude-3-5-sonnet-20241022",
+      "repo": "clawdbot",
+      "worktree": "/Users/yongjunwu/clawdbot/worktrees/task-test-1772959023",
+      "branch": "feat/task-test-1772959023",
+      "startedAt": 1772959023000,
+      "status": "crashed",
+      "notifyOnComplete": true,
+      "note": "Worktree missing"
     },
-    "history": []
-  }
-]
+    {
+      "id": "task-20260308-165424",
+      "tmuxSession": "claude-task-20260308-165424",
+      "agent": "claude",
+      "model": "claude-4-5-opus",
+      "repo": "clawdbot",
+      "worktree": "/Users/yongjunwu/clawdbot/worktrees/task-20260308-165424",
+      "branch": "feat/task-20260308-165424",
+      "startedAt": 1772960064000,
+      "status": "running",
+      "notifyOnComplete": true
+    },
+    {
+      "id": "task-20260308-170127",
+      "tmuxSession": "claude-task-20260308-170127",
+      "agent": "claude",
+      "model": "claude-4-5-opus",
+      "repo": "clawdbot",
+      "worktree": "/Users/yongjunwu/clawdbot/worktrees/task-20260308-170127",
+      "branch": "feat/task-20260308-170127",
+      "startedAt": 1772960487000,
+      "status": "running",
+      "notifyOnComplete": true
+    },
+    {
+      "id": "task-20260308-170240",
+      "tmuxSession": "claude-task-20260308-170240",
+      "agent": "claude",
+      "model": "claude-4-5-opus",
+      "repo": "clawdbot",
+      "worktree": "/Users/yongjunwu/clawdbot/worktrees/task-20260308-170240",
+      "branch": "feat/task-20260308-170240",
+      "startedAt": 1772960560000,
+      "status": "running",
+      "notifyOnComplete": true
+    },
+    {
+      "id": "myzoetest-\u5b9e\u73b0-stripe-\u9000\u6b3e\u529f\u80fd",
+      "tmuxSession": "codex-myzoetest-\u5b9e\u73b0-stripe-\u9000\u6b3e\u529f\u80fd",
+      "agent": "codex",
+      "model": "gpt-5.3-codex",
+      "repo": "myzoetest",
+      "worktree": "/Users/yongjunwu/clawdbot/worktrees/myzoetest-\u5b9e\u73b0-stripe-\u9000\u6b3e\u529f\u80fd",
+      "branch": "feat/myzoetest-\u5b9e\u73b0-stripe-\u9000\u6b3e\u529f\u80fd",
+      "startedAt": 1772961314000,
+      "status": "running",
+      "notifyOnComplete": true
+    }
+  ],
+  "history": [
+    {
+      "id": "task-old-expired",
+      "status": "done",
+      "completedAt": 1772096978,
+      "note": "Old task for cleanup test"
+    }
+  ]
+}
